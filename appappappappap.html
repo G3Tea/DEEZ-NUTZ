@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .svv {
+        background-color: royalblue;
+      }
+      .dv {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+      }
+      .butt {
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: hotpink;
+      }
+    </style>
+  </head>
+  <body class="svv">
+    <div class="dv">
+      <h2 id="qotes"></h2>
+      <button class="butt" onclick="butt()" id="bt">GET RANDOM QUOTE</button>
+    </div>
+    <script>
+      function butt() {
+        apiUrl = "https://api.quotable.io/random";
+        fetch(apiUrl, {
+          methods: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            document.getElementById("qotes").innerHTML = `
+            "${data.content}" - ${data.author}`;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        function butt() {}
+      }
+    </script>
+  </body>
+</html>
